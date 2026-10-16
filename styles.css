@@ -1,0 +1,18 @@
+/* MD Base64 —— 右下角状态栏按钮
+   状态栏默认文字色是 --text-muted，这里做成"看起来能点"的样子（手型 + 悬停底色）。 */
+.md-base64-btn {
+  cursor: pointer;
+  padding: 0 6px;
+  border-radius: 4px;
+  line-height: 1.4;
+  transition: background-color .12s ease, color .12s ease;
+}
+
+.md-base64-btn:hover {
+  background-color: var(--background-modifier-hover);
+  color: var(--text-normal);
+}
+
+.md-base64-btn:active {
+  background-color: var(--background-modifier-active-hover, var(--background-modifier-hover));
+}
