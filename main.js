@@ -415,14 +415,22 @@ class MdBase64SettingTab extends PluginSettingTab {
     const p = this.plugin;
     const self = this;
     c.empty();
+    c.addClass('mdb-settings');
 
-    c.createEl('h2', { text: 'MD Base64' });
-    c.createEl('p', {
-      cls: 'setting-item-description',
-      text: '把当前笔记导出成「图片内联」的单文件 Markdown。原笔记不会被修改。',
-    });
+    const ver = (p.manifest && p.manifest.version) ? 'v' + p.manifest.version : '';
+    const author = (p.manifest && p.manifest.author) || 'Hadesr';
 
-    new Setting(c)
+    /* 居中文字 logo */
+    const head = c.createDiv({ cls: 'mdb-head' });
+    head.createDiv({ cls: 'mdb-logo', text: 'MD Base64' });
+    head.createDiv({ cls: 'mdb-meta', text: ver + ' · 作者 ' + author });
+    head.createDiv({ cls: 'mdb-hint', text: '把当前笔记导出成「图片内联」的单文件 Markdown' });
+
+    /* 导出设置 */
+    const card = c.createDiv({ cls: 'mdb-card' });
+    card.createDiv({ cls: 'mdb-card-title', text: '导出设置' });
+
+    new Setting(card)
       .setName('导出方式')
       .setDesc('浏览器下载 = 触发系统下载（跨平台）；写入库内 = 直接存到下面那个文件夹（也跨平台，手机上更方便）。')
       .addDropdown(function (d) {
@@ -437,7 +445,7 @@ class MdBase64SettingTab extends PluginSettingTab {
       });
 
     if (p.settings.mode === 'vault') {
-      new Setting(c)
+      new Setting(card)
         .setName('库内导出文件夹')
         .setDesc('不存在会自动创建。文件名 = 原笔记名 + .base64.md；同名文件会被覆盖。')
         .addText(function (t) {
@@ -445,7 +453,7 @@ class MdBase64SettingTab extends PluginSettingTab {
             .onChange(async function (v) { p.settings.vaultFolder = v; await p.saveSettings(); });
         });
 
-      new Setting(c)
+      new Setting(card)
         .setName('导出后自动打开')
         .setDesc('写入库内成功后，直接在新标签页打开那个文件。')
         .addToggle(function (t) {
@@ -454,7 +462,7 @@ class MdBase64SettingTab extends PluginSettingTab {
         });
     }
 
-    new Setting(c)
+    new Setting(card)
       .setName('也内联远程图片')
       .setDesc('笔记里 ![x](https://…) 的图片也下载并内联。走 Obsidian 的请求通道（绕 CORS）；网络慢或图大时导出会久一点。关闭时这些远程图片保持原样。')
       .addToggle(function (t) {
@@ -462,14 +470,25 @@ class MdBase64SettingTab extends PluginSettingTab {
           .onChange(async function (v) { p.settings.inlineRemote = v; await p.saveSettings(); });
       });
 
-    c.createEl('h3', { text: '支持的图片语法' });
-    c.createEl('p', {
-      cls: 'setting-item-description',
-      text: '![[图片.png]]　![[图片.png|300]]（宽度）　![[图片.png|别名]]　![别名](图片.png)　![别名](<含空格的路径.png>)　![别名](图片.png "标题")　—— 已经是 data: 的图片会自动跳过，可反复导出。',
-    });
+    /* 支持的图片语法：标签块 */
+    const syntaxCard = c.createDiv({ cls: 'mdb-card' });
+    syntaxCard.createDiv({ cls: 'mdb-card-title', text: '支持的图片语法' });
+    const syntax = syntaxCard.createDiv({ cls: 'mdb-syntax' });
+    [
+      '![[图片.png]]',
+      '![[图片.png|300]]',
+      '![[图片.png|别名]]',
+      '![别名](图片.png)',
+      '![别名](<含空格的路径.png>)',
+      '![别名](图片.png "标题")',
+    ].forEach(function (s) { syntax.createEl('code', { cls: 'mdb-chip', text: s }); });
+    syntaxCard.createDiv({ cls: 'mdb-note', text: '已经是 data: 的图片会自动跳过，可反复导出。' });
 
-    c.createEl('h3', { text: '支持的图片格式' });
-    c.createEl('p', { cls: 'setting-item-description', text: Object.keys(MIME).join(' / ') });
+    /* 支持的图片格式：标签块 */
+    const fmtCard = c.createDiv({ cls: 'mdb-card' });
+    fmtCard.createDiv({ cls: 'mdb-card-title', text: '支持的图片格式' });
+    const fmts = fmtCard.createDiv({ cls: 'mdb-formats' });
+    Object.keys(MIME).forEach(function (k) { fmts.createEl('span', { cls: 'mdb-chip', text: k }); });
   }
 }
 

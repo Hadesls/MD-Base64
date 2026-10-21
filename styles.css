@@ -16,3 +16,73 @@
 .md-base64-btn:active {
   background-color: var(--background-modifier-active-hover, var(--background-modifier-hover));
 }
+
+/* ---------- 设置页：居中文字 logo + 卡片 ---------- */
+.mdb-settings .mdb-head { text-align: center; padding: 14px 0 18px; }
+.mdb-settings .mdb-logo {
+  font-size: 28px; font-weight: 800; letter-spacing: .3px;
+  color: var(--text-accent);
+  transition: filter .2s ease, transform .15s ease;
+}
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .mdb-settings .mdb-logo {
+    background: linear-gradient(135deg, var(--text-accent), var(--text-accent-hover, var(--text-accent)));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.mdb-settings .mdb-logo:hover { filter: hue-rotate(35deg) brightness(1.15); transform: scale(1.03); }
+.mdb-settings .mdb-meta { color: var(--text-muted); font-size: .82em; margin-top: 4px; }
+.mdb-settings .mdb-hint { color: var(--text-faint); font-size: .78em; margin-top: 3px; }
+
+.mdb-settings .mdb-card {
+  margin: 14px 0; padding: 8px 14px 12px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--background-secondary);
+}
+.mdb-settings .mdb-card-title {
+  padding: 4px 0 4px;
+  color: var(--text-muted);
+  font-size: .78em; font-weight: 700; letter-spacing: .08em;
+}
+/* 主题如果给下拉/输入框很大的胶囊圆角，会把文字顶到弧线上；这里压回小圆角 */
+.mdb-settings .mdb-card select,
+.mdb-settings .mdb-card input[type="text"] {
+  border-radius: 6px;
+}
+/* 主题/默认设置样式会给每一行套大圆角灰底，文字会贴到弧线上；
+   这里把行本身压平，只保留行间分隔线 */
+.mdb-settings .mdb-card .setting-item {
+  padding: 10px 2px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.mdb-settings .mdb-card .setting-item + .setting-item {
+  border-top: 1px solid var(--background-modifier-border) !important;
+}
+.mdb-settings .mdb-card .setting-item::before,
+.mdb-settings .mdb-card .setting-item::after {
+  background: transparent !important;
+  border-radius: 0 !important;
+}
+.mdb-settings .mdb-syntax,
+.mdb-settings .mdb-formats {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  padding: 8px 0 4px;
+}
+.mdb-settings .mdb-chip {
+  padding: 2px 7px;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 6px;
+  background: var(--background-primary);
+  color: var(--text-normal);
+  font-family: var(--font-monospace);
+  font-size: .78em;
+}
+.mdb-settings .mdb-note { margin-top: 6px; color: var(--text-faint); font-size: .78em; }
+
+@media (max-width: 600px) {
+  .mdb-settings .mdb-card { padding: 2px 10px 10px; }
+}

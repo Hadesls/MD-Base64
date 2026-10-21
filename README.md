@@ -3,7 +3,7 @@
 > 一个 Obsidian 插件：把当前笔记导出成「图片内联」的单文件 Markdown —— 发给别人、丢进任何 Markdown 阅读器都不缺图。**原笔记一个字都不动。**
 
 [![author](https://img.shields.io/badge/author-Hadesr-blue)](#许可)
-[![version](https://img.shields.io/badge/version-1.1.0-green)](#)
+[![version](https://img.shields.io/badge/version-1.1.1-green)](#)
 [![platform](https://img.shields.io/badge/platform-desktop%20%7C%20mobile-lightgrey)](#)
 
 **零依赖** —— 不用任何第三方库，也不用 Electron 那个已经被移除的 `@electron/remote`。桌面（Windows / macOS / Linux）与移动端（iOS / iPadOS / Android）通用。
@@ -21,7 +21,6 @@
 - [支持的图片语法](#支持的图片语法)
 - [支持的图片格式](#支持的图片格式)
 - [已知边界](#已知边界)
-- [开发](#开发)
 - [许可](#许可)
 
 ---
@@ -115,6 +114,8 @@
 
 `设置` → `MD Base64`：
 
+> 顶部是居中的「MD Base64」文字 logo，下面分三张卡片：导出设置 / 支持的图片语法 / 支持的图片格式。
+
 | 字段 | 说明 | 默认 |
 | --- | --- | --- |
 | **导出方式** | `浏览器下载` = 触发系统下载 / `写入库内文件夹` = 直接存到库里（手机更方便） | 浏览器下载 |
@@ -155,15 +156,6 @@
 4. **远程图片默认不内联**（要在设置里打开）。
 5. **SVG 走 `image/svg+xml`** 内联；部分编辑器对 SVG 的 data URI 支持不好，属正常现象。
 6. 写入库内模式下，同名 `*.base64.md` 会被**直接覆盖**（不生成副本）。
-
----
-
-## 版本历史
-
-| 版本 | 说明 |
-| --- | --- |
-| 1.0.0 | 首版：两种图片语法、幂等、进度提示、失败清单、远程图可选、库内 / 下载两种落地方式、跨平台 |
-| 1.1.0 | 去掉左侧栏图标，改为**右下角状态栏按钮「导出 Base64」**；加 `styles.css` 做悬停反馈 |
 
 ---
 
