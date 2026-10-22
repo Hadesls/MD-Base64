@@ -3,7 +3,7 @@
   "name": "MD Base64",
   "version": "1.1.1",
   "minAppVersion": "1.0.0",
-  "description": "把当前笔记导出成「图片内联」的单文件 Markdown：![[图片]] 与 ![alt](图片) 两种语法都认，不依赖 Electron，桌面与移动端通用。原笔记不动。",
+  "description": "将当前笔记导出为图片内联的单文件 Markdown，支持 Wiki 与标准图片语法，不依赖 Electron，桌面与移动端通用.",
   "author": "Hadesr",
   "authorUrl": "https://github.com/Hadesls",
   "isDesktopOnly": false
