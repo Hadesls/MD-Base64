@@ -3,7 +3,7 @@
 > 一个 Obsidian 插件：把当前笔记导出成「图片内联」的单文件 Markdown —— 发给别人、丢进任何 Markdown 阅读器都不缺图。**原笔记一个字都不动。**
 
 [![author](https://img.shields.io/badge/author-Hadesr-blue)](#许可)
-[![version](https://img.shields.io/badge/version-1.1.1-green)](#)
+[![version](https://img.shields.io/badge/version-1.1.2-green)](#)
 [![platform](https://img.shields.io/badge/platform-desktop%20%7C%20mobile-lightgrey)](#)
 
 **零依赖** —— 不用任何第三方库，也不用 Electron 那个已经被移除的 `@electron/remote`。桌面（Windows / macOS / Linux）与移动端（iOS / iPadOS / Android）通用。
@@ -80,20 +80,20 @@
 ### 方式二：Git / 手动安装
 
 ```bash
-git clone https://github.com/Hadesls/MD-Base64.git
+git clone https://github.com/Hadesls/MDbase64.git
 ```
 
 把仓库里的 `main.js`、`manifest.json`、`styles.css` 放进：
 
 ```
-<你的笔记库>/.obsidian/plugins/md-base64/
+<你的笔记库>/.obsidian/plugins/mdbase/
 ```
 
 然后在 Obsidian → `设置` → `第三方插件` → 关闭安全模式 → 启用 **MD Base64**。
 
 > 也可以直接在 GitHub 仓库页点 **Code → Download ZIP**，解压后取那三个文件。
 >
-> 目录名必须是 `md-base64`，与 `manifest.json` 里的 `id` 一致，否则加载不了。
+> 目录名必须是 `mdbase`，与 `manifest.json` 里的 `id` 一致，否则加载不了。
 >
 > 手机 / iOS：优先用社区市场安装；手动拷贝时，系统「文件」App 看不到 `.obsidian`，建议在电脑上操作。
 
