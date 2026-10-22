@@ -70,28 +70,29 @@
 
 ## 安装
 
-### 方式一：手动拷贝（推荐，零依赖）
+### 方式一：社区插件市场
 
-1. 下载本项目的三个文件：`main.js`、`manifest.json`、`styles.css`
-2. 放进你的库：
+`设置` → `第三方插件` → 关闭安全模式 → `浏览` → 搜索 **MD Base64** → 安装 → 启用。
 
-```
-<你的库>/.obsidian/plugins/md-base64/
-├── main.js
-├── manifest.json
-└── styles.css
+### 方式二：Git / 手动安装
+
+```bash
+git clone https://github.com/Hadesls/MD-Base64.git
 ```
 
-3. 打开 Obsidian → `设置` → `第三方插件` → 刷新 → 启用 **MD Base64**
+把仓库里的 `main.js`、`manifest.json`、`styles.css` 放进：
 
-### 方式二：BRAT（适合手机端 / 自动更新）
+```
+<你的笔记库>/.obsidian/plugins/md-base64/
+```
 
-1. 先从社区插件市场安装 **BRAT**
-2. BRAT 设置 → `Add a beta plugin` → 填入本仓库地址
-3. 自动安装并启用
+然后在 Obsidian → `设置` → `第三方插件` → 关闭安全模式 → 启用 **MD Base64**。
 
-> **iOS / iPadOS 提示**：系统「文件」App 没有"显示隐藏文件"开关，`.obsidian` 是隐藏目录。推荐用 **BRAT**，或用电脑操作。
-> **BRAT 注意**：本仓库的插件文件在**根目录**（不在 `dist/` 子目录里）。
+> 也可以直接在 GitHub 仓库页点 **Code → Download ZIP**，解压后取那三个文件。
+>
+> 目录名必须是 `md-base64`，与 `manifest.json` 里的 `id` 一致，否则加载不了。
+>
+> 手机 / iOS：优先用社区市场安装；手动拷贝时，系统「文件」App 看不到 `.obsidian`，建议在电脑上操作。
 
 ---
 
